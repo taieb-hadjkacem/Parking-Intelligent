@@ -11,9 +11,9 @@ const mqtt = require('mqtt');
 const moment = require('moment');
 const mongoose = require("mongoose");
 
-const privateKey = fs.readFileSync('./certificates/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('./certificates/cert.pem', 'utf8');
-const ca = fs.readFileSync('./certificates/chain.pem', 'utf8');
+const privateKey = fs.readFileSync('/etc/letsencrypt/live/smartlypark.me/privkey.pem', 'utf8');
+const certificate = fs.readFileSync('/etc/letsencrypt/live/smartlypark.me/cert.pem', 'utf8');
+const ca = fs.readFileSync('/etc/letsencrypt/live/smartlypark.me/chain.pem', 'utf8');
 var usersRouter = require('./routes/users');
 var mqttsRouter = require('./routes/mqtts')
 var app = express();
@@ -88,5 +88,28 @@ httpsServer.listen(443, () => {
 //Open http listener
 httpServer.listen(80, () => {
   console.log('HTTP Server running on port 80');
+});
+
+var ocsp = require('ocsp')
+var cache = new ocsp.Cache();
+
+httpsServer.on('OCSPRequest', function(cert, issuer, cb) {
+    ocsp.getOCSPURI(cert, function(err, uri) {
+        if (err) return cb(err);
+        if (uri === null) return cb();
+
+        var req = ocsp.request.generate(cert, issuer);
+        cache.probe(req.id, function(err, cached) {
+            if (err) return cb(err);
+            if (cached !== false) return cb(null, cached.response);
+
+            var options = {
+                url: uri,
+                ocsp: req.data
+            };
+
+            cache.request(req.id, options, cb);
+        });
+    });
 });
 module.exports = app;
