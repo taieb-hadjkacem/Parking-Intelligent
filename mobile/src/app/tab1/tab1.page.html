@@ -1,11 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      My Sensors
+      Parking status
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true">
+
+<ion-content [fullscreen]="true" class="center">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -15,19 +16,25 @@
     </ion-toolbar>
   </ion-header>
   <ion-item>
-    <a>{{profiledata?.forename}}  {{profiledata?.surname}}</a>
+    <a style="color: #3dc2ff ">{{profiledata?.forename}}  {{profiledata?.surname}}</a>
   </ion-item>
   <ion-item>
-    <a>{{profiledata?.location}}</a>
+    <a style="color: #3dc2ff ">{{profiledata?.location}}</a>
   </ion-item>
-  <ion-button (click)="logout()">logout</ion-button>
-  <ion-button (click)="createBarChart()">refresh</ion-button>
-  <ion-list >
+  <ion-button (click)="logout()" color="secondary">logout</ion-button>
+  <ion-button (click)="createBarChart()" color="secondary">refresh</ion-button>
+
+
+  <ion-list>
     <ion-item *ngIf="!availablePlace">
+   
         <img src="assets/images/red.png" width="200" height="200">
+
     </ion-item>
     <ion-item *ngIf="availablePlace">
+
         <img src="assets/images/green.png" width="200" height="200">
+
     </ion-item>
   </ion-list>
 </ion-content>
