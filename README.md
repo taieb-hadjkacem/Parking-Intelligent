@@ -40,6 +40,7 @@ ionic cordova run android --device
 ```
 #### Partie IoT
 Le schéma de cablage
+
 ![](https://lh3.googleusercontent.com/pw/AM-JKLVkDApUPyVJxHM2MBc4z3jQL40CLasb1kVhLTFBzkoGgeHeErmLOlxo7DgmXptRv1IxbSTTbigjuYVAJ3dkzrCxRLqmm2yom9G5wsCE6Z616UntR7TEh7UutmLpo9zSnara6kSbsHMgS7NNcjSdSWSA=w734-h583-no)
 ### Déploiement
 La partie serveur NodeJS est déployée sur une machine virtuelle Azure dotée d'un OS Ubuntu 20.4 et accessible via l'URL [api.smartlypark.me](https://api.smartlypark.me). Ce serveur est sécurisé avec un certificat  **Wildard SSL**  associé à une clé `elleptic curve 384`, délivrée par **Let's Encrypt** et générée avec la commande suivante.
