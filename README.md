@@ -50,9 +50,11 @@ La communication client-serveur est protégé exclusivement par **TLS 1.3**. Le 
 
 Ci-dessous l'attestation obtenue avec *SSL Lab*.
 ![SSL lab](https://lh3.googleusercontent.com/pw/AM-JKLU13_832LciDLUbf8JmyMx_pDCJ5TbsU5Z7fbGR8izP2TDnPo6r3QR6shRrEoya1Pvv62NKk0_SQ70Bx92_Hh_rkn1ByQRhbJxhQgovrUcqCNQ_skMAk40BxIWnOGA0IOFPYnJPw3CowqyVuFOVTiyk=w899-h466-no)
+
 Le broker MQTT est installé sur une autre machine virtuelle et accessible via l'URL [api.smartlypark.me](https://api.smartlypark.me)
 L'autentification à l'application mobile est assurée par OAuth 2 PKCE selon le diagramme suivant.
 ![](https://lh3.googleusercontent.com/pw/AM-JKLUmYypt-vLQ6twR-rHQwzH9cI2FxnZSvCD99IYBrEEm9mcxMFZRj8L_IciezQ_yIjiqywK5wGZ1DQBAbVt084JPXp7S7lGePKm8Mm5Ve_Ob98adV-lpGNmESO_OZZahqzz6iujH3QZ0XCJPg160wVpp=w697-h542-no)
+
 Le broker mosquitto est installé via 
 ```bash
 sudo apt install certbot mosquitto mosquitto-clients
