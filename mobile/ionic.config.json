@@ -1,0 +1,11 @@
+{
+  "name": "Keep Me Safe",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "530a43cc"
+}

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      My Sensors
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <a>{{profiledata?.forename}}  {{profiledata?.surname}}</a>
+  </ion-item>
+  <ion-item>
+    <a>{{profiledata?.location}}</a>
+  </ion-item>
+  <ion-button (click)="logout()">logout</ion-button>
+  <ion-button (click)="createBarChart()">refresh</ion-button>
+  <ion-list >
+    <ion-item *ngIf="!availablePlace">
+        <img src="assets/images/red.png" width="200" height="200">
+    </ion-item>
+    <ion-item *ngIf="availablePlace">
+        <img src="assets/images/green.png" width="200" height="200">
+    </ion-item>
+  </ion-list>
+</ion-content>
