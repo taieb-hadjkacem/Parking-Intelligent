@@ -1,10 +1,10 @@
 const mqttData = require('../models/mqtt');
 const mqtt = require('mqtt');
 
-function MqttData(){}; 
+function MqttData(){};
 MqttData.prototype.getResults = async (req, res , next)=> {
     mqttData.find({}, function(err, data) {
-      res.json(data);      });
+      res.json(data.pop())     });
 };
 
 MqttData.prototype.addmqtt = (infos)=> {
