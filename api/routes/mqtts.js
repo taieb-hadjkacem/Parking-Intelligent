@@ -4,11 +4,11 @@ const mqtt = require('mqtt');
 var router = express.Router();
 var MqttData = require('../controllers/mqtt.controller')
 /* GET mqtt listing. */
-var topic='hello';
+var topic='parkA';
 var mqttData = new MqttData();
 console.log("mqtt is connected")
 //Connection to MQTT
-    const client = mqtt.connect('mqtts://mqtt.smartlypark.me:1883', {
+    const client = mqtt.connect('mqtts://mqtt.smartlypark.me:8883', {
 
   username: 'sammy',
   password: '**supcomA1998'
@@ -16,8 +16,8 @@ console.log("mqtt is connected")
 //On received MQTT message
 client.on('connect',() => {
     console.log('connected')
-    client.subscribe(['hello'], () => {
-        console.log('subscribe to topic')
+    client.subscribe([topic], () => {
+        console.log(`Subscribe to topic '${topic}'`)
     })
 })
 client.on('message', function (topic, message) {
