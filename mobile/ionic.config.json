@@ -1,0 +1,11 @@
+{
+  "name": "Smartly Park Me",
+  "integrations": {
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "530a43cc"
+}
